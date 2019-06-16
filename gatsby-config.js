@@ -5,12 +5,9 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Subtle Leaf`,
-    author: `Mark Agbuya`,
+    author: `Joyce`,
     description: `Subtle Leaf Blog about house plants.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
-    social: {
-      twitter: `kylemathews`,
-    },
+    siteUrl: `https://subtleleafdesigns.com/`,
   },
   plugins: [
     {

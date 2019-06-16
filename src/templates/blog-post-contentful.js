@@ -1,11 +1,13 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
+
 
 class BlogPostContentfulTemplate extends React.Component {
   render() {
@@ -21,7 +23,16 @@ class BlogPostContentfulTemplate extends React.Component {
         />
         <h1>{post.title}</h1>
         <div>
-          { documentToReactComponents(post.content.json) }
+          { documentToReactComponents(post.content.json, {
+              renderNode: {
+                [BLOCKS.EMBEDDED_ASSET]: (node) => {
+                  const title = node.data.target.fields.title;
+                  const url = node.data.target.fields.file['en-US'].url;
+                  return <img alt={title} src={url} />
+                }
+              }
+            }
+          ) }
         </div>
         <hr
           style={{

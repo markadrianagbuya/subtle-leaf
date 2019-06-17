@@ -70,6 +70,10 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `p:domain_verify`, // Required by Pinterest to verify website ownership
+          content: `8ecaa655b09f23edebef8225eece7dc6`
+        }
       ].concat(meta)}
       link={[
         { rel: 'icon', type: 'image/png', sizes: "16x16", href: `${favicon16}` },

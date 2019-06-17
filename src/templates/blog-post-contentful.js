@@ -2,6 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Img from "gatsby-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -21,6 +22,7 @@ class BlogPostContentfulTemplate extends React.Component {
           title={post.title}
           description={post.metaDescription}
         />
+        <Img fluid={post.titleImage.fluid} />
         <h1>{post.title}</h1>
         <div>
           { documentToReactComponents(post.content.json, {
@@ -82,8 +84,12 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost( slug: { eq: $slug }) {
       title
-      metaDescription
       author
+      titleImage {
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
       content {
         json
       }

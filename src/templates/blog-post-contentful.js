@@ -19,7 +19,7 @@ class BlogPostContentfulTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title={post.title}
-          description={post.description || post.subtitle}
+          description={post.metaDescription}
         />
         <h1>{post.title}</h1>
         <div>
@@ -82,7 +82,7 @@ export const pageQuery = graphql`
     }
     contentfulBlogPost( slug: { eq: $slug }) {
       title
-      subtitle
+      metaDescription
       author
       content {
         json

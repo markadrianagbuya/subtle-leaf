@@ -24,6 +24,7 @@ class BlogPostContentfulTemplate extends React.Component {
         />
         <Img fluid={post.titleImage.fluid} />
         <h1>{post.title}</h1>
+        <small>{post.publishDate}</small>
         <div>
           { documentToReactComponents(post.content.json, {
               renderNode: {
@@ -85,6 +86,7 @@ export const pageQuery = graphql`
     contentfulBlogPost( slug: { eq: $slug }) {
       title
       author
+      publishDate(formatString: "MMMM DD, YYYY")
       titleImage {
         fluid {
           ...GatsbyContentfulFluid

@@ -22,7 +22,7 @@ class BlogPostContentfulTemplate extends React.Component {
           title={post.title}
           description={post.metaDescription}
         />
-        <Img fluid={post.titleImage.fluid} />
+        {post.titleImage && <Img fluid={post.titleImage.fluid} />}
         <h1>{post.title}</h1>
         <small>{post.publishDate}</small>
         <div>

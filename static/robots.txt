@@ -1,2 +1,4 @@
+Sitemap: https://subtleleafdesigns.com/sitemap.xml
+
 User-agent: *
 Disallow:
